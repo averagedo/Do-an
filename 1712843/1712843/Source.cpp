@@ -67,6 +67,7 @@ void DocStr(wchar_t ch[], SINHVIEN &sv, int &i){
 		i++;
 	}
 	sv.MSSV[i - 1] = L'\0';
+
 	int j = 0;
 	i++;
 	while (ch[i] != ';'&&ch[i] != '\0'){
@@ -74,7 +75,8 @@ void DocStr(wchar_t ch[], SINHVIEN &sv, int &i){
 		i++;
 		j++;
 	}
-	sv.Hovaten[i - 1] = '\0';
+	sv.Hovaten[j] = '\0';
+
 	j = 0;
 	i++;
 	while (ch[i] != ';'&&ch[i] != '\0'){
@@ -82,10 +84,62 @@ void DocStr(wchar_t ch[], SINHVIEN &sv, int &i){
 		i++;
 		j++;
 	}
-	sv.Nganh[i - 1] = '\0';
+	sv.Nganh[j] = '\0';
 
+	j = 0;
+	i++;
+	while (ch[i] != ';'&&ch[i] != '\0'){
+		sv.gmail[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.gmail[j] = '\0';
+
+	j = 0;
+	i++;
+	while (ch[i] != ';'&&ch[i] != '\0'){
+		sv.khoa[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.khoa[j] = '\0';
+
+	j = 0;
+	i++;
+	while (ch[i] != ';'&&ch[i] != '\0'){
+		sv.ngsinh[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.ngsinh[j] = '\0';
+
+	j = 0;
+	i++;
+	while (ch[i] != ';'&&ch[i] != '\0'){
+		sv.image[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.image[j] = '\0';
+
+	j = 0;
+	i++;
+	while (ch[i] != ';'&&ch[i] != '\0'){
+		sv.BThan[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.BThan[j] = '\0';
+
+	j = 0;
+	i++;
+	while (ch[i] != '\0'){
+		sv.Sthich[j] = ch[i];
+		i++;
+		j++;
+	}
+	sv.Sthich[j] = '\0';
 }
-
 
 void main()
 {
@@ -102,6 +156,12 @@ void main()
 	wprintf(L"%ls\n", sv.MSSV);
 	wprintf(L"%ls\n", sv.Hovaten);
 	wprintf(L"%ls\n", sv.Nganh);
+	wprintf(L"%ls\n", sv.gmail); 
+	wprintf(L"%ls\n", sv.khoa);
+	wprintf(L"%ls\n", sv.ngsinh);
+	wprintf(L"%ls\n", sv.image);
+	wprintf(L"%ls\n", sv.BThan);
+	wprintf(L"%ls\n", sv.Sthich);
 
 	while (1){
 		Dochtml(ch, n);
