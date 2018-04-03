@@ -3,6 +3,20 @@
 #include<fcntl.h>
 #include<string.h>
 
+struct Sinhvien
+{
+	wchar_t MSSV[7];
+	wchar_t Hovaten[35];
+	wchar_t Nganh[30];
+	wchar_t gmail[30];
+	wchar_t khoa[5];
+	wchar_t ngsinh[11];
+	wchar_t image[15];
+	wchar_t BThan[70];
+	wchar_t Sthich[70];
+};
+typedef struct Sinhvien SINHVIEN;
+
 void Dochtml(char ch[], int &n){
 	FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\html goc.txt", "rt");
 	if (fp == NULL){
@@ -23,17 +37,74 @@ int Dem(char a[]){
 	}
 	return i + 2;
 }
-void Ghihtml(char ch[]){
+
+void Thecho(SINHVIEN sv, char c)
+{
+	FILE*ft = _wfopen(L"C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\ghiKQ.html", L"at,ccs=UTF-8");
+	if (ft == NULL){
+		printf("Khong doc duoc file.");
+	}
+	else{
+		switch (c)
+		{
+		case '1':
+			fputws(sv.MSSV, ft);
+			break;
+		case'2':
+			fputws(sv.Hovaten, ft);
+			break;
+		case'3':
+			fputws(sv.Nganh, ft);
+			break;
+		case'4':
+			fputws(sv.gmail, ft);
+			break;
+		case'5':
+			fputws(sv.khoa, ft);
+			break;
+		case'6':
+			fputws(sv.ngsinh, ft);
+			break;
+		case'7':
+			fputws(sv.image, ft);
+			break;
+		case'8':
+			fputws(sv.BThan, ft);
+			break;
+		case'9':
+			fputws(sv.Sthich, ft);
+			break;
+		}
+		fclose(ft);
+		FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\ghiKQ.html", "at");
+
+	}
+}
+
+void Ghihtml(char ch[], SINHVIEN sv){
 	FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\ghiKQ.html", "at");
 	if (fp == NULL){
 		printf("Khong doc duoc file.");
 	}
 	else{
-		fputs(ch, fp);
+		int i = 0;
+		while (ch[i] != '\n'){
+			if (ch[i] == '*'){
+				char c = ch[i + 1];
+				fclose(fp);
+				Thecho(sv, c);
+				i = i + 2;
+			}
+			else{
+				putc(ch[i], fp);
+				i++;
+			}
+		}
+		ch[i] = '\n';
+		putc(ch[i], fp);
 	}
 	fclose(fp);
 }
-
 void Doccsv(wchar_t a[]){
 	FILE* fp = _wfopen(L"C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\Thongtin1.csv", L"r, ccs=UTF-8");
 	if (fp == NULL){
@@ -47,19 +118,7 @@ void Doccsv(wchar_t a[]){
 	fclose(fp);
 }
 
-struct Sinhvien
-{
-	wchar_t MSSV[7];
-	wchar_t Hovaten[35];
-	wchar_t Nganh[30];
-	char gmail[30];
-	int khoa[4];
-	char ngsinh[15];
-	char image[15];
-	wchar_t BThan[70];
-	wchar_t Sthich[70];
-};
-typedef struct Sinhvien SINHVIEN;
+
 
 void DocStr(wchar_t ch[], SINHVIEN &sv, int &i){
 	while (ch[i] != ';'&&ch[i] != '\0'){
@@ -152,21 +211,11 @@ void main()
 
 	Doccsv(chw);
 	DocStr(chw, sv, i);
-	wprintf(L"%d\n", i);
-	wprintf(L"%ls\n", sv.MSSV);
-	wprintf(L"%ls\n", sv.Hovaten);
-	wprintf(L"%ls\n", sv.Nganh);
-	wprintf(L"%ls\n", sv.gmail); 
-	wprintf(L"%ls\n", sv.khoa);
-	wprintf(L"%ls\n", sv.ngsinh);
-	wprintf(L"%ls\n", sv.image);
-	wprintf(L"%ls\n", sv.BThan);
-	wprintf(L"%ls\n", sv.Sthich);
 
 	while (1){
 		Dochtml(ch, n);
 		n += Dem(ch);
-		Ghihtml(ch);
+		Ghihtml(ch,sv);
 		int kiemtra = 1;
 		for (int i = 0; i < 6; i++){
 			if (ch[i] != ch1[i]){
