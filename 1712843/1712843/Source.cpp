@@ -60,7 +60,7 @@ void Thecho(SINHVIEN sv, char c, char ch[], wchar_t ch1[])
 }
 
 void Dochtml(char ch[], int &n){
-	FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\html goc.txt", "rt");
+	FILE* fp = fopen("html goc.txt", "rt");
 	if (fp == NULL){
 		printf("Khong doc duoc file.");
 	}
@@ -81,7 +81,7 @@ int Dem(char a[]){
 }
 
 void SoLuong(char ch[], int &w){
-	FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\Thongtin1.csv", "rt");
+	FILE* fp = fopen("Thongtin1.csv", "rt");
 	if (fp == NULL){
 		printf("Khong doc duoc file.");
 	}
@@ -121,7 +121,7 @@ void Ghihtml(char ch[], SINHVIEN sv, char v[], wchar_t b[]){
 }
 
 void DMSSV(char a[], int x){
-	FILE* fp = fopen("C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\Thongtin1.csv", "r");
+	FILE* fp = fopen("Thongtin1.csv", "r");
 	if (fp == NULL){
 		printf("Khong doc duoc file.");
 	}
@@ -149,7 +149,7 @@ void DMSSV(char a[], int x){
 }
 
 void Doccsv(wchar_t a[], int x){
-	FILE* fp = _wfopen(L"C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\Thongtin1.csv", L"r, ccs=UTF-8");
+	FILE* fp = _wfopen(L"Thongtin1.csv", L"r, ccs=UTF-8");
 	if (fp == NULL){
 		printf("Khong doc duoc file.");
 	}
@@ -269,7 +269,7 @@ void main()
 		int n = 0;
 		char ch1[] = "</html>";
 		char ch2[9];
-		char ch3[100] = "C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\WEBSITE\\";
+		char ch3[100] = "WEBSITE\\";
 		char ch4[6] = ".html";
 		wchar_t chw[150];
 		SINHVIEN sv;
@@ -284,7 +284,7 @@ void main()
 		Doccsv(chw, z);
 		DocStr(chw, sv);
 
-		wchar_t chw1[100] = L"C:\\Users\\Admin\\Downloads\\Documents\\hoc ky 2 - nam 1\\ky thuat lap trinh\\Do an 1\\WEBSITE\\";
+		wchar_t chw1[100] = L"WEBSITE\\";
 		wchar_t chw2[6] = L".html";
 
 		wcscat(chw1, sv.MSSV);
